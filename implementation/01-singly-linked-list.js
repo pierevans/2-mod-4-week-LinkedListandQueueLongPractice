@@ -18,44 +18,69 @@ class SinglyLinkedList {
         // Your code here
 
         // Write your hypothesis on the time complexity of this method here
+        // const newNode = new SinglyLinkedList(val);
+        // if(!this.head) {
+        //     this.head = newNode;
+        //     this.length ++;
+        //     return this.length;
+        // }
+        // newNode.next = this.head;
+        // this.head = newNode;
+
+        const newNode = new SinglyLinkedNode(val)
+        newNode.next = this.head;
+        this.head = newNode
+        this.length++
+        return this;
     }
 
     addToTail(val) {
         // There are bugs in this method! Fix them!!!
 
         // Add node of val to tail of linked list
-        let newNode = new SinglyLinkedNode(data);
-
-        if (!head) {
-            head = newNode;
-            return head;
+        let newNode = new SinglyLinkedNode(val);
+        this.length++;
+        if (!this.head) {
+            this.head = newNode;
+            return this;
         }
 
-        let curr = head;
-        while (curr) {
-            curr = current.next;
+        let curr = this.head;
+        while (curr.next) {
+            curr = curr.next;
         }
         curr.next = newNode;
 
-        return head;
+        return this;
 
         // Write your hypothesis on the time complexity of this method here
     }
 
     removeFromHead() {
-        // Remove node at head
 
-        // Your code here
+        if(!this.length) return undefined;
+        this.length--;
+        const oldHead = this.head;
+        this.head = oldHead.next;
 
-        // Write your hypothesis on the time complexity of this method here
+        return oldHead;
     }
 
     removeFromTail() {
-        // Remove node at tail
 
-        // Your code here
+        this.length--;
 
-        // Write your hypothesis on the time complexity of this method here
+        let current = this.head;
+
+        while(current.next.next) {
+            current = current.next;
+        }
+
+        const oldTail = current.next;
+        current.next = null;
+
+        return oldTail;
+
     }
 
     peekAtHead() {
