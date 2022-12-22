@@ -77,28 +77,28 @@ class DoublyLinkedList {
     }
 
     removeFromTail() {
-        // Remove node at tail
 
-        // Your code here
+        if(!this.tail) return;
 
-        // Write your hypothesis on the time complexity of this method here
+        let oldTail = this.tail;
+        this.tail = oldTail.prev;
+
+        if(this.tail) this.tail.next = null;
+
+        this.length--;
+
+        return oldTail.value;
     }
 
     peekAtHead() {
-        // Return value of head node
 
-        // Your code here
-
-        // Write your hypothesis on the time complexity of this method here
+        if(!this.length) return undefined;
+        return this.head.value;
     }
 
     peekAtTail() {
-        // Return value of tail node
-
-        // Your code here
-
-        // Write your hypothesis on the time complexity of this method here
-    }
+        if(!this.length) return undefined;
+        return this.tail.value;    }
 }
 
 module.exports = {
