@@ -68,35 +68,55 @@ class SinglyLinkedList {
 
     removeFromTail() {
 
-        this.length--;
+        //if there is an empty list, return undefined because there is no tail
+        if(!this.length) return undefined;
 
-        let current = this.head;
+        //if one element in list, set head to null and return
+        if(this.length === 1) {
+           this.length--;
+            this.head = null;
+            return this.head;
 
-        while(current.next.next) {
-            current = current.next;
         }
 
-        const oldTail = current.next;
-        current.next = null;
+        //iterate through linked list, stop at second to last
+        //set second to last.next to null
+        //return last
+        if(this.head){
 
-        return oldTail;
+            this.length--;
+
+            let current = this.head;
+
+            while(current.next.next) {
+                current = current.next;
+            }
+
+            const oldTail = current.next;
+            current.next = null;
+
+            return oldTail;
+        }
 
     }
 
     peekAtHead() {
-        // Return the value of head node
+        if(!this.length) return undefined;
 
-        // Your code here
-
-        // Write your hypothesis on the time complexity of this method here
+        return this.head.value;
     }
 
     print() {
-        // Print out the linked list
 
-        // Your code here
+        if(!this.length) return;
 
-        // Write your hypothesis on the time complexity of this method here
+        let current = this.head;
+
+        while(current) {
+            console.log(current.value);
+            current = current.next;
+        }
+
     }
 }
 
